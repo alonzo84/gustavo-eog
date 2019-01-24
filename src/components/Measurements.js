@@ -59,7 +59,7 @@ class Measurements extends Component {
             </ListItem>
             <ListItem>
               <span>Last Received:</span>
-              <ListItemText primary={`${secondsFetched - secondsNow} seconds ago`} />
+              <ListItemText primary={`${Math.abs(secondsFetched - secondsNow)} seconds ago`} />
             </ListItem>
           </List>
         </CardContent>
