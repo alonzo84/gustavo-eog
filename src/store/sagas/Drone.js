@@ -18,7 +18,7 @@ function* watchFetchMetrics(action) {
     yield cancel();
     return;
   }
-  yield put({ type: actions.DRONE_MEASUREMENTS_RECEIVED, measurements: measurements });
+  yield put({ type: actions.DRONE_MEASUREMENTS_RECEIVED, measurements });
 }
 
 function* watchAppLoad() {

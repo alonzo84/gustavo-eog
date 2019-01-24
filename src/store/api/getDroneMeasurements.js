@@ -9,7 +9,7 @@ const getDroneMeasurements = async () => {
     return { error: { code: response.status } };
   }
   const json = await response.json();
-  return { data: json };
+  return json;
 };
 
 export default getDroneMeasurements;
