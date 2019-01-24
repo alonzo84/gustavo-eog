@@ -28,7 +28,7 @@ const droneMeasurementsRecevied = (state, action) => {
     longitude,
     temperature: metric,
     timestamp: timestamp,
-    data: action.data,
+    measurements,
   };
 };
 

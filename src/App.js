@@ -9,6 +9,7 @@ import Header from "./components/Header";
 import Wrapper from "./components/Wrapper";
 import Measurements from "./components/Measurements";
 import MyMapComponent from "./components/MyMapComponent";
+import MyChartComponent from "./components/MyChartComponent";
 
 const store = createStore();
 const theme = createMuiTheme({
@@ -35,6 +36,8 @@ const App = props => (
       <Wrapper>
         <Header />
         <Measurements />
+        <MyMapComponent />
+        <MyChartComponent />
         <ToastContainer />
       </Wrapper>
     </Provider>
