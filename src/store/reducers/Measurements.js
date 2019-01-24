@@ -16,8 +16,10 @@ const startLoading = (state, action) => {
 
 const droneMeasurementsRecevied = (state, action) => {
   const { measurements } = action;
-  if (!measurements) return state;
-  const { metric, latitude, longitude, timestamp} = measurements;
+  const data = measurements[0];
+  if (!data) return state;
+  const { metric, latitude, longitude, timestamp} = data;
+
 
   return {
     ...state,

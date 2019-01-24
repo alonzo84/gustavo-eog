@@ -12,7 +12,7 @@ function* watchFetchMetrics(action) {
     yield cancel();
     return;
   }
-  const measurements = data[0] ? data[0] : false;
+  const measurements = data ? data : false;
   if (!measurements) {
     yield put({ type: actions.API_ERROR });
     yield cancel();

@@ -1,6 +1,7 @@
-import React from "react"
-import { compose, withProps } from "recompose"
-import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps"
+import React from "react";
+import { connect } from "react-redux";
+import { compose, withProps } from "recompose";
+import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps";
 
 import Card from "@material-ui/core/Card";
 import CardHeaderRaw from "@material-ui/core/CardHeader";
@@ -38,7 +39,7 @@ const MyMapComponent = compose(
         defaultZoom={4}
         defaultCenter={{ lat: 29.775717, lng: -95.356919 }}
     >29.775717, -95.356919
-    {props.isMarkerShown && <Marker position={{ lat: 29.775717, lng: -95.356919 }} onClick={props.onMarkerClick} />}
+    {props.isMarkerShown && <Marker position={{ lat: props.latitude, lng: props.longitude }} onClick={props.onMarkerClick} />}
     </GoogleMap>
 )
 
@@ -64,7 +65,9 @@ class MyFancyComponent extends React.PureComponent {
 
     render() {
         const {
-            classes
+            classes,
+            latitude,
+            longitude
         } = this.props;
         return (
             <Card className={classes.card}>
@@ -72,10 +75,25 @@ class MyFancyComponent extends React.PureComponent {
                     <MyMapComponent
                         isMarkerShown={this.state.isMarkerShown}
                         onMarkerClick={this.handleMarkerClick}
+                        latitude={latitude}
+                        longitude={longitude}
                     />
             </Card>
         )
     }
 }
 
-export default withStyles(styles)(MyFancyComponent);
+const mapState = (state, ownProps) => {
+    const {
+        latitude,
+        longitude
+    } = state.measurements;
+    return {
+        latitude,
+        longitude
+    };
+};
+
+export default connect(
+    mapState
+)(withStyles(styles)(MyFancyComponent));
